@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header__wrapper">
+            <a href="" class="header__logo">
+                <img src="./assets/Logo (1).svg" alt="">
+            </a>
+            <div class="header__actions">
+                <button class="search"></button>
+
+                <select name="" id="" class="h">
+                    <option value="">ENG</option>
+                    <option value="">UZ</option>
+                    <option value="">RUS</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+        <div class="mashina">
+        <img src="./images/car-1.svg" alt="" class="car">
+        <div class="controls">
+            <button class="pre"></button>
+            <button class="next"></button>
+        </div>
+        </div>
+        </section>
+        <section class="footer">
+            <ul class="list">
+                <button class="view">View 360</button>
+                <li class="item">
+                    <h2 class="title">TELURRIDE</h2>
+                    <p class="desc">FWD</p>
+                </li>
+                <li class="item">
+                    <h2 class="title">2021</h2>
+                    <p class="desc">YEAR</p>
+                </li>
+                <li class="item">
+                    <h2 class="title">291hp</h2>
+                    <p class="desc">POWER</p>
+                </li>
+                <li class="item">
+                    <h2 class="title">V6</h2>
+                    <p class="desc">ENGINE</p>
+                </li>
+                <li class="item">
+                    <h2 class="title">8-SPEED A/T</h2>
+                    <p class="desc">AUTOMATIC</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        const elCar = document.querySelector(".car")
+
+        let total = 17
+        let counter = 1
+        function updateUrl() {
+            return elCar.src = `./images/car-${counter}.svg`
+        }
+
+        const elPre = document.querySelector(".pre")
+        const elNext = document.querySelector(".next")
+
+        elPre.addEventListener("click", function(){
+            counter--
+
+            if(counter < 1){
+                counter = total
+            }
+            updateUrl()
+        })
+
+        elNext.addEventListener("click", function(){
+            counter++
+
+            if(counter > total){
+                counter = 1
+            }
+            updateUrl()
+        })
+
+
+        let bosildimi = false
+        let boshlangich;
+
+        elCar.parentElement.addEventListener("mousedown", function(evt){
+            boshlangich = evt.clienX
+            bosildimi = true
+        })
+
+        window.addEventListener("mouseup", function(){
+            bosildimi = false
+        })
+
+        window.addEventListener("mousemove", function(evt) {
+            if(bosildimi == false){
+                return
+            }
+
+            let tugash = evt.clientX - boshlangich
+
+            if(Math.abc(tugash) > 10){
+                if(tugash > 0 ){
+                    counter--
+                    if(counter < 1){
+                        counter = total
+                    }
+                }else{
+                    counter++
+
+                    if(counter > total){
+                        counter = 1
+                    }
+                }
+            }
+
+            updateCarImage();
+
+            boshlangich = evt.clientX
+
+            console.log(boshlangich);
+            console.log(tugash);
+        })
+    </script>
+</body>
+</html>
