@@ -88,49 +88,6 @@
             }
             updateUrl()
         })
-
-
-        let bosildimi = false
-        let boshlangich;
-
-        elCar.parentElement.addEventListener("mousedown", function(evt){
-            boshlangich = evt.clienX
-            bosildimi = true
-        })
-
-        window.addEventListener("mouseup", function(){
-            bosildimi = false
-        })
-
-        window.addEventListener("mousemove", function(evt) {
-            if(bosildimi == false){
-                return
-            }
-
-            let tugash = evt.clientX - boshlangich
-
-            if(Math.abc(tugash) > 10){
-                if(tugash > 0 ){
-                    counter--
-                    if(counter < 1){
-                        counter = total
-                    }
-                }else{
-                    counter++
-
-                    if(counter > total){
-                        counter = 1
-                    }
-                }
-            }
-
-            updateCarImage();
-
-            boshlangich = evt.clientX
-
-            console.log(boshlangich);
-            console.log(tugash);
-        })
     </script>
 </body>
 </html>

@@ -145,7 +145,13 @@ body {
 
 .controls {
     display: flex;
+    width: 64px;
+    height: 63px;
+    border-radius: 50%;
     position: absolute;
-    bottom: 70px;
-    margin-left: 20px;
+    top: 780px;
+    bottom: -10px;
+    background-color: transparent;
+    gap: 10px;
+    margin-left: 1px;
 }
